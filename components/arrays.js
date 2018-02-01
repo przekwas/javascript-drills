@@ -16,15 +16,19 @@ class ArrayDrills {
      *
      * @example value(2, [0, 1, 3, 2]) -> 3
      */
-    value() {
-
+    value(number, array) {
+        if (array[number] !== undefined) {
+            return array[number];
+        } else {
+            return "That isn't a valid index for this array!";
+        }
     }
 
     /**
      * Takes in one parameter (array), returns its length
      */
-    length() {
-
+    length(array) {
+        return array.length;
     }
 
     /**
@@ -33,8 +37,12 @@ class ArrayDrills {
      *
      * @example sum([1, 2, 3, -2]) -> 4
      */
-    sum() {
-
+    sum(array) {
+        let arraySum = 0;
+        for (let i = 0; i < array.length; i++) {
+            arraySum += array[i];
+        }
+        return arraySum;
     }
 
     /**
@@ -43,8 +51,13 @@ class ArrayDrills {
      *
      * @example square([2, 3, 4]) -> [4, 9, 16]
      */
-    square() {
-
+    square(array) {
+        let newArray = [];
+        for (let i = 0; i < array.length; i++) {
+            let squared = Math.pow(array[i], 2);
+            newArray.push(squared);
+        }
+        return newArray;
     }
 
     /**
@@ -53,8 +66,13 @@ class ArrayDrills {
      *
      * @example add(2, [2, 3, 4]) -> [4, 5, 6]
      */
-    add() {
-
+    add(number, array) {
+        let newArray = [];
+        for (let i = 0; i < array.length; i++) {
+            let added = array[i] + number;
+            newArray.push(added);
+        }
+        return newArray;
     }
 
     /**
@@ -64,8 +82,13 @@ class ArrayDrills {
      * @example contains(3, [1, 3, 2]) -> true
      * @example contains(3, [1, 2, 2]) -> false
      */
-    contains() {
-
+    contains(number, array) {
+        for (let i = 0; i < array.length; i++) {
+            if (array[i] === number) {
+                return true;
+            }
+        }
+        return false;
     }
 
     /**
@@ -74,8 +97,11 @@ class ArrayDrills {
      *
      * @example combine([1, 2, 3, 4], [2, 3, 5]) -> [1, 2, 3, 4, 2, 3, 5]
      */
-    combine() {
-
+    combine(arrayOne, arrayTwo) {
+        for (let i = 0; i < arrayTwo.length; i++) {
+            arrayOne.push(arrayTwo[i]);
+        }
+        return arrayOne;
     }
 
     /**
@@ -83,8 +109,12 @@ class ArrayDrills {
      *
      * @example reverse([1, 2, 4, 3]) -> [3, 4, 2, 1]
      */
-    reverse() {
-
+    reverse(array) {
+        let newArray = [];
+        for (let i = array.length - 1; i >= 0; i--) {
+            newArray.push(array[i]);
+        }
+        return newArray;
     }
 
     /**
@@ -95,8 +125,16 @@ class ArrayDrills {
      * @example sort([1, 2, 4, 3]) -> [1, 2, 3, 4]
      * @example sort(['Apple', 'Pear', 'Baseball', 'Banana']) -> ['Apple', 'Banana', 'Baseball', 'Pear']
      */
-    sort() {
-
+    sort(array) {
+        if (array.includes(undefined)) {
+            let newArray = [];
+            return newArray;
+        } else if (!array.some(isNaN)) {
+            array.sort((a, b) => { return a - b });
+        } else {
+            array.sort();
+        }
+        return array;
     }
 
     /**
@@ -105,8 +143,14 @@ class ArrayDrills {
      *
      * @example union([1, 2, 3, 4], [2, 3, 5]) -> [1, 2, 3, 4, 5]
      */
-    union() {
-
+    union(arrayOne, arrayTwo) {
+        let newArray = [];
+        arrayOne.concat(arrayTwo).forEach(element => {
+            if (newArray.indexOf(element) == -1) {
+                newArray.push(element);
+            }
+        });
+        return newArray;
     }
 
     /**
@@ -115,8 +159,16 @@ class ArrayDrills {
      *
      * @example intersect([1, 2, 3, 4], [2, 3, 5]) -> [2, 3]
      */
-    intersect() {
-
+    intersect(arrayOne, arrayTwo) {
+        let newArray = [];
+        for (let i = 0; i < arrayOne.length; i++) {
+            for (let j = 0; j < arrayTwo.length; j++) {
+                if (arrayOne[i] === arrayTwo[j]) {
+                    newArray.push(arrayOne[i]);
+                }
+            }
+        }
+        return newArray;
     }
 
     /**
@@ -126,8 +178,14 @@ class ArrayDrills {
      *
      * @example difference([1, 2, 3, 4], [2, 3, 5]) -> [1]
      */
-    difference() {
-
+    difference(arrayOne, arrayTwo) {
+        let newArray = [];
+        for (let i = 0; i < arrayTwo.length; i++) {
+            if (arrayTwo.indexOf(arrayOne[i]) === -1) {
+                newArray.push(arrayOne[i]);
+            }
+        }
+        return newArray;
     }
 
     /**
@@ -136,8 +194,14 @@ class ArrayDrills {
      *
      * @example defined([1, NaN, undefined, null, 3, null, 4, 0]) -> [1, 3, 4, 0]
      */
-    defined() {
-
+    defined(array) {
+        let newArray = [];
+        for (let i = 0; i < array.length; i++) {
+            if (array[i] !== null && !isNaN(array[i]) || typeof array[i] === "string") {
+                newArray.push(array[i]);
+            }
+        }
+        return newArray;
     }
 
     /**
@@ -146,8 +210,14 @@ class ArrayDrills {
      *
      * @example remove(3, [1, 2, 4, 3, 5, 3]) -> [1, 2, 4, 5]
      */
-    remove() {
-
+    remove(number, array) {
+        let newArray = [];
+        for (let i = 0; i < array.length; i++) {
+            if (array[i] !== number) {
+                newArray.push(array[i]);
+            }
+        }
+        return newArray;
     }
 
     /**
@@ -159,8 +229,20 @@ class ArrayDrills {
      *
      * @example flatten([0, 1, [2], [[3], [4]]]) -> [0, 1, 2, 3, 4]
      */
-    flatten() {
+    flatten(array) {
+        let newArray = [];
+        for (let i = 0; i < array.length; i++) {
+            if (Array.isArray(array[i])) {
+                newArray = [].concat.apply([], array);
+            }
+        }
 
+        for (let k = 0; k < newArray.length; k++) {
+            if (Array.isArray(newArray[k])) {
+                newArray = [].concat.apply([], newArray);
+            }
+        }
+        return newArray;
     }
 
     /**
@@ -172,8 +254,14 @@ class ArrayDrills {
      *
      * @example findMissingNumber([1, 2, 3, 4, 6, 7, 8, 9, 10]) -> 5
      */
-    findMissingNumber(arr) {
+    findMissingNumber(array) {
+        let length = array.length;
+        let total = (length + 1) * (length + 2) / 2
 
+        for (let i = 0; i < length; i++) {
+            total -= array[i];
+        }
+        return total;
     }
 }
 
