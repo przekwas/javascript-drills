@@ -13,74 +13,89 @@ class NumberDrills {
     /**
      * Takes in two parameters, adds them, and returns the result
      */
-    add() {
-
+    add(numOne, numTwo) {
+        return numOne + numTwo;
     }
 
     /**
      * Takes in two parameters, subtracts them, and returns the result
      */
-    subtract() {
-
+    subtract(numOne, numTwo) {
+        return numOne - numTwo;
     }
 
     /**
      * Takes in two parameters, multiplies them, and returns the result
      */
-    multiply() {
-
+    multiply(numOne, numTwo) {
+        return numOne * numTwo;
     }
 
     /**
      * Takes in two parameters, divides them, and returns the result
      */
-    divide() {
-
+    divide(numOne, numTwo) {
+        return numOne / numTwo;
     }
 
     /**
      * Takes in two parameters, returns the result of the modulus
      */
-    mod() {
-
+    mod(numOne, numTwo) {
+        return numOne % numTwo;
     }
 
     /**
      * Takes in two parameters, returns true if the first parameter is
      * greater than the second, false otherwise.
      */
-    isGreater() {
-
+    isGreater(numOne, numTwo) {
+        if (numOne > numTwo) {
+            return true;
+        }
+        return false;
     }
 
     /**
      * Takes in two parameters, returns true if the first parameter is
      * less than the second, false otherwise.
      */
-    isLess() {
-
+    isLess(numOne, numTwo) {
+        if (numOne < numTwo) {
+            return true;
+        }
+        return false;
     }
 
     /**
      * Takes in one parameter, returns true if it is even, false otherwise.
      */
-    isEven() {
-
+    isEven(num) {
+        if (num % 2 === 0) {
+            return true;
+        }
+        return false;
     }
 
     /**
      * Takes in one parameter, returns true if it is odd, false otherwise.
      */
-    isOdd() {
-
+    isOdd(num) {
+        if (num % 2 !== 0) {
+            return true;
+        }
+        return false;
     }
 
     /**
      * Takes in two parameters, returns true if the first parameter is
      * evenly divisible by the second.
      */
-    isDivisibleBy() {
-
+    isDivisibleBy(numOne, numTwo) {
+        if (numOne % numTwo === 0) {
+            return true;
+        }
+        return false;
     }
 }
 
