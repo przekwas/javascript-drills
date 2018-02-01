@@ -14,30 +14,33 @@ class StringDrills {
      * Takes in two parameters (string), concatenate (merges) them together and
      * returns them.
      */
-    combine() {
-
+    combine(strOne, strTwo) {
+        return strOne.concat(strTwo);
     }
 
     /**
      * Takes in one parameter (string), returns its length
      */
-    length() {
-
+    length(str) {
+        return str.length;
     }
 
     /**
      * Takes in one parameter (string), returns true if it is empty, false otherwise
      */
-    isEmpty() {
-
+    isEmpty(str) {
+        if (!str) {
+            return true;
+        }
+        return false;
     }
 
     /**
      * Takes in one parameter (string), returns an Array of strings that
      * contains only the words in the string (no spaces)
      */
-    toArray() {
-
+    toArray(str) {
+        return str.split(" ");
     }
 
     /**
@@ -45,16 +48,20 @@ class StringDrills {
      * Returns a string that only contains the first X number of characters
      * based on the number parameter.
      */
-    clip() {
-
+    clip(str, num) {
+        return str.substring(0, num);
     }
 
     /**
      * Takes in one parameter (string), returns a new string with the characters
      * in the reverse order
      */
-    reverse() {
-
+    reverse(str) {
+        let newString = "";
+        for (let i = str.length - 1; i >= 0; i--) {
+            newString += str[i];
+        }
+        return newString;
     }
 
     /**
@@ -64,16 +71,24 @@ class StringDrills {
      * them. The final string should not be longer than the number passed in! If the number passed in is less than or equal to 3,
      * return the string as-is.
      */
-    truncate() {
-
+    truncate(str, num) {
+        if (num <= 3) {
+            return str;
+        } else if (str.length > num && num > 3) {
+            return str.slice(0, (num - 3)) + '...';
+        } else if (str.length === num) {
+            return str.slice(0, (num - 3)) + '...';
+        } else if (str.length <= num) {
+            return str;
+        }
     }
 
     /**
      * Takes in one parameter (string), returns a new string that has no leading or
      * trailing spaces.
      */
-    strip() {
-
+    strip(str) {
+        return str.trim(" ");
     }
 
     /**
@@ -81,32 +96,47 @@ class StringDrills {
      * a string that is repeated X number of times depending upon the number
      * passed in.
      */
-    repeat() {
-
+    repeat(str, num) {
+        let newStr = "";
+        for (let i = 0; i < num; i++) {
+            newStr += str;
+        }
+        return newStr;
     }
 
     /**
      * Takes in two paramters (strings), returns true if the second string is
      * contained within the first string, false otherwise.
      */
-    contains() {
-
+    contains(strOne, strTwo) {
+        if (strOne.includes(strTwo)) {
+            return true;
+        }
+        return false;
     }
 
     /**
      * Takes in two paramters (strings), returns true if the strings are
      * the same, false otherwise. (case-sensitive)
      */
-    isEqual() {
-
+    isEqual(strOne, strTwo) {
+        if (strOne.match(strTwo)) {
+            return true;
+        }
+        return false;
     }
 
     /**
      * Takes in two paramters (strings), returns true if the strings have the
      * same letters (case-insensitive), false otherwise.
      */
-    isSimilar() {
-
+    isSimilar(strOne, strTwo) {
+        let stringOne = strOne.toLowerCase();
+        let stringTwo = strTwo.toLowerCase();
+        if (stringOne === stringTwo) {
+            return true;
+        }
+        return false;
     }
 }
 
